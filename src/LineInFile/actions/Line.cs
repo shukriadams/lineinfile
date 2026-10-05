@@ -92,13 +92,18 @@ namespace LineInFile
                 if (!lineMatchResponse.Succeeded)
                     return lineMatchResponse;
 
-                if (lineMatchResponse.Index == -1)
-                    return new Response {
-                        Description = $"Failed to find \"{this.Regexp}\" in file \"{path}\""
-                    };
+                int insertIndex = lineMatchResponse.Index;
+                if (insertIndex == -1)
+                {
+                    Console.WriteLine($"No match for \"{this.Regexp}\", inserting at end of file");
+                    lines = lines.Append(line).ToList();
+                } 
+                else
+                {
+                    Console.WriteLine($"Found \"{this.Regexp}\" in at line {(lineMatchResponse.Index + 1)}");
+                    lines[insertIndex] = line;
+                }
 
-                lines[lineMatchResponse.Index] = line;
-                Console.WriteLine($"Changed line at index {lineMatchResponse.Index}");
             }
 
             return this.Write(lines, path);
