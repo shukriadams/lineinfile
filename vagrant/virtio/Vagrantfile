@@ -1,0 +1,22 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+Vagrant.configure("2") do |config|
+
+    config.vm.box = "generic/ubuntu2204"
+    config.vm.hostname = "lineInFile"
+    config.vm.synced_folder "./../..", "/vagrant", 
+      type: "nfs",
+
+      # You need NFS_VERSION var on your system, on Ubuntu 22 and above, value will be 4, in earlier systems 3.
+      # Example, add this line your .bashrc
+      #
+      #     export NFS_VERSION=4
+      #
+      nfs_version: ENV['NFS_VERSION'], 
+      nfs_udp: false
+
+    config.vm.provision :shell, path: "./../provision.sh"  
+    config.vm.provider :libvirt do |v|
+        v.default_prefix = "lineInFile"
+    end
+end 
