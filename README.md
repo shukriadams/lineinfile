@@ -31,9 +31,8 @@ Ensure the environment variable `Foo` is created in .bashrc, and if it already e
 
     lineinfile --path ~/.bashrc --regex "export Foo=" --line "export Foo=Baz"
 
-Note that when using both --regex and --line, the line value inserted into the file should match the regex. 
-If this isn't the case, the line will be inserted each time the operation runs, as the regex will never
-match it.
+Note that when using both --regex and --line, the line value inserted into the file should also match against the regex. 
+If not, the line will be inserted each time the operation runs, as the regex will never match it.
 
 ## License
 
