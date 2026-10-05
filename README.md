@@ -1,6 +1,6 @@
 # lineInFile
 
-Command line, based directly on Ansible's `lineinfile` module. 
+CLI application that brings Ansible's `lineinfile` module to an operating system near you. 
 
 ## Install 
 
@@ -16,3 +16,6 @@ Arguments
     --regex | -r : The regular expression to look for in every line of the file.
     --version | -v : Prints out the version of this tool.
 
+## License
+
+GPL 3.0. See [license](https://github.com/shukriadams/lineinfile/blob/master/LICENSE) for details.
