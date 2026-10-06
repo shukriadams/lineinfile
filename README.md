@@ -16,10 +16,10 @@ Place wherever executables live on your system, make executable with `chmod +x`.
 
 Arguments
 
-    --path    | -p : The file to modify. Required.
-    --line    | -l : The line to insert/replace into the file. Required.
-    --regex   | -r : The regular expression to look for in every line of the file.
-    --version | -v : Prints out the version of this tool.
+    -p | --path    : The file to modify. Required.
+    -l | --line    : The line to insert/replace into the file. Required.
+    -r | --regex   : The regular expression to look for in every line of the file.
+    -v | --version : Prints out the version of this tool.
 
 ### Examples
 
