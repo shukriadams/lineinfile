@@ -42,8 +42,11 @@ with conditional logic. It would likely look something like
         sed -i 'i some_line' /file/to/path
     fi  
 
-With `lineInFile` you can get the same result with `lineinfile -p /path/to/file -l "some_line"`. If you're scripting lots
-of files, that adds up.
+With `lineInFile` you can get the same result with 
+    
+    lineinfile -p /path/to/file -l 'some_line'
+    
+If you're scripting lots of files, that adds up.
 
 
 ## License
