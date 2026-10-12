@@ -14,7 +14,7 @@ Ensure environment variable `Foo` is created in .bashrc, and set to `Bar` in
 
 Ensure environment variable `Foo` is created in .bashrc, and if it already exists, is set to `Baz`.
 
-    lineinfile --path ~/.bashrc --regex "export Foo=" --line "export Foo=Baz"
+    lineinfile -p ~/.bashrc -r "export Foo=" -l "export Foo=Baz"
 
 Note that when using both --regex and --line, the line value inserted into the file should also match against the regex. 
 If not, the line will be inserted each time the operation runs, as the regex will never match it.
@@ -31,10 +31,14 @@ If not, the line will be inserted each time the operation runs, as the regex wil
 Download binary from [releases](https://github.com/shukriadams/lineinfile/releases), no dependencies required.
 Place wherever executables live on your system, name it whatever you want (assuming `ìineInFile`), then make executable with `chmod +x`.
 
-## This is dumb, why not use sed?
+## This is dumb, why not just use sed?
 
-You can achieve similar results using `bash`, `grep`, and `sed`, but over several lines of code and
-with conditional logic. It would likely look something like
+With `lineInFile` you can concisely edit a file with
+    
+    lineinfile -p /path/to/file -l 'some_line'
+    
+You can achieve similar results using `bash`, `grep`, and `sed`, over several lines of code and
+with conditional logic. 
 
     if grep -qxF -- "some_line" /file/to/path; then
         echo "text already in file"
@@ -42,12 +46,7 @@ with conditional logic. It would likely look something like
         sed -i 'i some_line' /file/to/path
     fi  
 
-With `lineInFile` you can get the same result with 
-    
-    lineinfile -p /path/to/file -l 'some_line'
-    
-If you're scripting lots of files, that adds up.
-
+If you're scripting lots of files, that adds up quickly.
 
 ## License
 
